@@ -8,19 +8,20 @@ import java.util.Scanner;
 
 public class Main {
     //static final  String filePath = "a_example.txt";
-    //static final  String filePath = "b_small.txt";
+    static final  String filePath = "b_small.txt";
     //static final  String filePath = "c_medium.txt";
-    static final  String filePath = "d_quite_big.txt";
+    //static final  String filePath = "d_quite_big.txt";
     //static final  String filePath = "e_also_big.txt";
 
     static int maxSlice;
     static int length;
     static List<Integer> pizzaArray = new ArrayList<>();
+    static List<Integer> outPutNums = new ArrayList<>();
 
 
     public static void main(String[] args) {
 	    readFile();
-	    result(pizzaArray);
+	    result2(pizzaArray);
     }
 
     public static void readFile(){
@@ -38,7 +39,7 @@ public class Main {
         }
     }
 
-    public static void result(List<Integer> arr){
+    public static void result1(List<Integer> arr){
         int max = arr.get(0);
         int starter = arr.get(0);
         int lastIndex = 0;
@@ -66,5 +67,30 @@ public class Main {
         System.out.println("Result: "+ max);
         System.out.println("Difference: "+ (maxSlice-max));
 
+    }
+
+    public static void result2(List<Integer> arr){
+        int max = 0;
+        for (int i = arr.size() - 1; i>=0; i--){
+            int newMax = arr.get(i) + max;
+            if((newMax > max) && newMax <= maxSlice ){
+                max = newMax;
+                outPutNums.add(i);
+            }
+        }
+        int sum = 0;
+        for (int num: outPutNums) {
+            sum = sum+ arr.get(num);
+        }
+        /*
+        double percentDiff = (1- (double)max / maxSlice) * 100;
+        System.out.println("Max: "+maxSlice);
+        System.out.println("Result: "+ max);
+        System.out.println("Difference: "+ (maxSlice-max));
+        System.out.println("Percent Diff: "+percentDiff+"%");
+        System.out.println(sum);
+         */
+        System.out.println(outPutNums.size());
+        System.out.println(outPutNums);
     }
 }
