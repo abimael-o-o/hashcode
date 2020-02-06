@@ -2,13 +2,14 @@ package com.motion;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
-    //static final  String filePath = "a_example.txt";
-    static final  String filePath = "b_small.txt";
+
+    // Uncomment the filepaths for each of the tests!
+
+    static final  String filePath = "a_example.txt";
+    //static final  String filePath = "b_small.txt";
     //static final  String filePath = "c_medium.txt";
     //static final  String filePath = "d_quite_big.txt";
     //static final  String filePath = "e_also_big.txt";
@@ -20,7 +21,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-	    readFile();
+	    readFile(); // Reads the file and populates vars
 	    result2(pizzaArray);
     }
 
@@ -39,36 +40,6 @@ public class Main {
         }
     }
 
-    public static void result1(List<Integer> arr){
-        int max = arr.get(0);
-        int starter = arr.get(0);
-        int lastIndex = 0;
-
-        for (int i = 1; i<arr.size(); i++){
-            int newMax = starter + arr.get(i);
-            if(newMax > max && newMax < maxSlice ){
-                max = newMax;
-                lastIndex = i;
-            }
-            starter = arr.get(i);
-        }
-        pizzaArray.remove(lastIndex);
-        pizzaArray.remove(lastIndex-1);
-
-        for (int i = 0; i < arr.size(); i++){
-            int newMax = max + arr.get(i);
-            if(newMax > max && newMax < maxSlice ){
-                max = newMax;
-            }
-        }
-
-
-        System.out.println("Max: "+maxSlice);
-        System.out.println("Result: "+ max);
-        System.out.println("Difference: "+ (maxSlice-max));
-
-    }
-
     public static void result2(List<Integer> arr){
         int max = 0;
         for (int i = arr.size() - 1; i>=0; i--){
@@ -78,18 +49,7 @@ public class Main {
                 outPutNums.add(i);
             }
         }
-        int sum = 0;
-        for (int num: outPutNums) {
-            sum = sum+ arr.get(num);
-        }
-        /*
-        double percentDiff = (1- (double)max / maxSlice) * 100;
-        System.out.println("Max: "+maxSlice);
-        System.out.println("Result: "+ max);
-        System.out.println("Difference: "+ (maxSlice-max));
-        System.out.println("Percent Diff: "+percentDiff+"%");
-        System.out.println(sum);
-         */
+        Collections.reverse(outPutNums);
         System.out.println(outPutNums.size());
         System.out.println(outPutNums);
     }
