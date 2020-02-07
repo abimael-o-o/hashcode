@@ -10,8 +10,8 @@ public class Main {
 
     //static final  String filePath = "a_example.txt";
     //static final  String filePath = "b_small.txt";
-    //static final  String filePath = "c_medium.txt";
-    static final  String filePath = "d_quite_big.txt";
+    static final  String filePath = "c_medium.txt";
+    //static final  String filePath = "d_quite_big.txt";
     //static final  String filePath = "e_also_big.txt";
 
     static int maxSlice;
@@ -53,8 +53,17 @@ public class Main {
                   max = newMax;
                   outPutNums.add(i);
               }
-          }else if(i-1 > 0 && (newMax +arr.get(i-1) <= maxSlice)){
-              max = newMax;
+          }else if(i-1 > 0 && arr.get(i-1) %2 != 0){
+              if((newMax +arr.get(i-1) <= maxSlice)) {
+                  max = newMax;
+                  outPutNums.add(i);
+              }
+          }
+          else{
+              if ((newMax > max) && newMax <= maxSlice) {
+                  max = newMax;
+                  outPutNums.add(i);
+              }
           }
         }
         double percentDiff = (1- (double)max / maxSlice) * 100;
