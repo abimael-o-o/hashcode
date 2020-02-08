@@ -42,30 +42,36 @@ public class Main {
 
     public static void result2(List<Integer> arr){
         int max = 0;
+        int difference = 0;
+        int maxFromBack = 0;
+        int maxFromFront = 0;
+        int maxMiddle = 0;
         for (int i = arr.size() - 1; i>=0; i--){
             int newMax = arr.get(i) + max;
-          /*  if(newMax%2 == 0 && i-1 < 0 && arr.get(i-1) %2 != 0 && (newMax +arr.get(i-1) <= maxSlice) ){
+            if((newMax > max) && newMax <= maxSlice ){
                 max = newMax;
+                outPutNums.add(i);
+                arr.remove(i);
+            }else {
+                difference = maxSlice - max;
+                break;
             }
-           */
-          if(newMax%2 == 0) {
-              if ((newMax > max) && newMax <= maxSlice) {
-                  max = newMax;
-                  outPutNums.add(i);
-              }
-          }else if(i-1 > 0 && arr.get(i-1) %2 != 0){
-              if((newMax +arr.get(i-1) <= maxSlice)) {
-                  max = newMax;
-                  outPutNums.add(i);
-              }
-          }
-          else{
-              if ((newMax > max) && newMax <= maxSlice) {
-                  max = newMax;
-                  outPutNums.add(i);
-              }
-          }
         }
+        for (int i = arr.size() - 1; i>= 0; i--){
+            if(maxFromBack + arr.get(i) <= difference){
+                maxFromBack += arr.get(i);
+            }
+
+            if(maxFromFront + arr.get(arr.size() - i -1) <= difference){
+                maxFromFront += arr.get(i);
+            }
+        }
+        if(maxFromBack >= maxFromFront){
+            max += maxFromBack;
+        }else{
+            max += maxFromFront;
+        }
+
         double percentDiff = (1- (double)max / maxSlice) * 100;
         System.out.println("Max: "+maxSlice);
         System.out.println("Result: "+ max);
@@ -75,5 +81,7 @@ public class Main {
         Collections.reverse(outPutNums);
         System.out.println(outPutNums.size());
         System.out.println(outPutNums);
+        System.out.println(arr);
+        System.out.println(difference);
     }
 }
