@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2c548259-b3ac-4a42-bea3-bc8fa4a78884" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hashcode/com/motion/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hashcode/com/motion/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/motion/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/motion/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,8 +49,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.runMain" />
       <item itemvalue="Application.Main" />
+      <item itemvalue="Application.runMain" />
     </list>
     <recent_temporary>
       <list>
